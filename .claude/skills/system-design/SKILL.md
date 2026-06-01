@@ -32,6 +32,15 @@ a one-line "informed by" note; the argument can't depend on it.)
 you rejected and why, you haven't designed — you've taken the first
 idea. The Alternatives section keeps you honest.
 
+**Answer to the brief if one frames the initiative.** When a brief
+exists, cite it in the header as `> Brief: brief:<slug>` — its
+*Done state*, *Out of scope*, *Decisions already made* and
+*Decision principle* are constraints on the design, not
+suggestions. If no brief frames this design, an explicit warning
+block goes at the top of the artifact; the missing strategic frame
+is the first thing a reader sees, not something hidden in the
+self-critique.
+
 ## What good looks like
 
 - A new engineer could implement from this without reading anything

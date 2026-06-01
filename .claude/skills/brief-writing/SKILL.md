@@ -47,6 +47,16 @@ decision has no provenance, it isn't decided — move it to Open
 decisions. The cost of a forged "already made" is months of work in
 the wrong direction.
 
+**Cite the pillar by its stable ID, not by heading text.** The
+brief's `Vision pillar:` header is
+`pillar:<vision-slug>:<pillar-slug>` — read it from the vision's
+entry in `.claude/state/index.yaml` under `pillars:`. Citing by ID
+survives heading rewordings; citing by `§"theme name"` does not.
+The integrity check blocks the commit if the ID does not exist, so
+picking the wrong slug fails fast — but the right *discipline* is
+to confirm the pillar before writing, not to discover the mismatch
+on commit.
+
 **Don't sequence inside the brief.** The brief lists handoffs; it
 does not order them. Sequencing belongs to the roadmap, and roadmaps
 change faster than briefs should. A brief that orders its handoffs
