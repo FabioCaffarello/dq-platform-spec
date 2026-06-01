@@ -22,9 +22,18 @@ Skills are grouped by the three planes (`CLAUDE.md` §"Three planes").
 | Execution | [`spec-authoring/`](./spec-authoring/SKILL.md) | Turn a design slice into a buildable, checkable spec. | `/spec` | `docs/specs/` |
 | Execution | [`roadmapping/`](./roadmapping/SKILL.md) | Sequence existing specs into an order defended by their dependencies. | `/roadmap` | `docs/roadmap/` |
 
+## Meta commands
+
+Orchestration only — no skill, no template, no artifact of its own.
+
+| Command | Role |
+|---------|------|
+| [`/chain`](../commands/chain.md) | Walk a contiguous segment of the chain in one session. Hard cap of 3 elos; operator confirmation before starting; halts at any non-cosmetic self-critique; never commits. |
+
 ## Adding a skill
 
 Add a directory `<name>/SKILL.md` here, a matching command in
 `.claude/commands/<name>.md`, and a template in `templates/<name>.md`.
-Then add one row to the table above. Same shape as the five that
-already exist. See `CLAUDE.md` §"Growth" for the rule of thumb.
+Then add one row to the table above. Same shape as the seven that
+already exist. See `CONTRIBUTING.md` §"Growing the harness" for the
+rule of thumb.
