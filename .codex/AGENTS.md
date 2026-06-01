@@ -9,8 +9,10 @@ there applies to Codex exactly as to Claude Code. This file exists only
 because Codex looks for `.codex/AGENTS.md` by convention.
 
 This is a spec-authoring workspace. You distill a pinned reference into
-study → system-design → spec → roadmap. Low ceremony; quality comes
-from good templates and an honest self-critique ending every document.
+scout → study → system-design → spec → roadmap. Low ceremony; quality
+comes from good templates and an honest self-critique ending every
+document. The scout is the wide pass over the reference; everything
+else mergulha.
 
 Before producing anything:
 

@@ -14,8 +14,11 @@ This is a spec-authoring workspace. You read a pinned reference
 documents that guide real development:
 
 ```text
-study → system-design → spec → roadmap
+scout → study → system-design → spec → roadmap
 ```
+
+The scout is the wide pass (one map of the whole reference); the study
+mergulha on one topic.
 
 Low ceremony, high quality. Quality comes from good templates and from
 every document ending in an honest self-critique — not from gates.
@@ -25,9 +28,10 @@ every document ending in an honest self-critique — not from gates.
 1. Read `CLAUDE.md` (the chain, the seven principles, the commands).
 2. `make refs-sync` if `references/dq-platform/` is absent. Never
    reason about the reference from memory.
-3. Pick the command for the artifact you're making (`/study`,
-   `/system-design`, `/spec`, `/roadmap`); each loads its skill and
-   template.
+3. Pick the command for the artifact you're making (`/scout`,
+   `/study`, `/system-design`, `/spec`, `/roadmap`); each loads its
+   skill and template. If there is no scout for this reference yet,
+   start there — `/study` leans on the map a scout draws.
 
 ## The three that matter most
 
