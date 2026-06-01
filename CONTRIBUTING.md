@@ -44,6 +44,18 @@ the GitHub UI. Three axes:
 `main` is protected. The settings to apply on the GitHub side are
 documented in [`docs/dev/branch-protection.md`](./docs/dev/branch-protection.md).
 
+## Growing the harness
+
+The harness is minimal on purpose. Grow by addition, never by
+rewriting from scratch:
+
+- A new reference → new `references/<name>.lock`, add `<name>/` to
+  `.gitignore`, `make refs-sync`. The script already loops over locks.
+- A repeated craft → a new skill under `.claude/skills/`.
+- A new artifact type → a template + a skill + a command, same shape
+  as the seven that exist (scout, study, vision, brief, system-design,
+  spec, roadmap).
+
 ## What not to do
 
 - Don't reason about the reference from memory. Hydrate it
