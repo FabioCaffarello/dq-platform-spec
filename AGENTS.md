@@ -26,9 +26,12 @@ every document ending in an honest self-critique — not from gates.
 ## Before you start
 
 1. Read `CLAUDE.md` (the chain, the seven principles, the commands).
-2. `make refs-sync` if `references/dq-platform/` is absent. Never
+2. Skim [`.claude/reference-map.md`](./.claude/reference-map.md) — the
+   hand-maintained "you are here" for the reference. Two minutes;
+   then you know what `dq-platform` is and where to find things in it.
+3. `make refs-sync` if `references/dq-platform/` is absent. Never
    reason about the reference from memory.
-3. Pick the command for the artifact you're making (`/scout`,
+4. Pick the command for the artifact you're making (`/scout`,
    `/study`, `/system-design`, `/spec`, `/roadmap`); each loads its
    skill and template. If there is no scout for this reference yet,
    start there — `/study` leans on the map a scout draws.
