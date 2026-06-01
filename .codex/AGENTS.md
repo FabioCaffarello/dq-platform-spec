@@ -9,9 +9,10 @@ there applies to Codex exactly as to Claude Code. This file exists only
 because Codex looks for `.codex/AGENTS.md` by convention.
 
 This is a spec-authoring workspace. You distill a pinned reference into
-Three planes. *Learning*: scout → study. *Strategic*: vision (the
-horizon, fed by learning). *Execution*: system-design → spec →
-roadmap, answering to the vision. Low ceremony; quality comes from
+Three planes. *Learning*: scout → study. *Strategic*: vision → brief
+(vision is the horizon; brief turns one pillar into operating context
+an agent can carry). *Execution*: system-design → spec → roadmap,
+answering to the brief above it. Low ceremony; quality comes from
 good templates and an honest self-critique ending every document.
 
 Before producing anything:
