@@ -46,7 +46,11 @@ template `templates/brief.md` before starting.
    Sequencing belongs to `/roadmap`.
 9. Write the self-critique honestly — name the choice an agent would
    still have to invent from thin air given only this brief.
-10. End with a one-line commit summary.
+10. **Next handoff.** Print at the end of the artifact:
+    > Next: `/system-design <slug>` matching this brief — turn the
+    > pillar into architecture. One-line reason naming the most
+    > architecturally load-bearing piece of the brief.
+11. End with a one-line commit summary.
 
 Produces operating context, not a plan. Run once per initiative; it
 lives until the underlying pillar shifts or the work is retired.

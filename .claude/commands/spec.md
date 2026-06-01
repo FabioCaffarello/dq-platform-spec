@@ -42,4 +42,8 @@ first.
    Make acceptance observably checkable. State dependencies explicitly.
 7. Self-critique: could someone build exactly this and still ship the
    wrong thing?
-8. One-line commit summary.
+8. **Next handoff.** Print at the end of the artifact:
+   > Next: `/spec <other-slice>` for the next adjacent component, or
+   > `/roadmap` if the specs together cover the brief. One-line
+   > reason for the choice.
+9. One-line commit summary.

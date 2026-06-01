@@ -29,7 +29,10 @@ Load the skill `.claude/skills/scouting/SKILL.md` and the template
    what is in it. Three to seven entries is healthy.
 7. Write the self-critique honestly — including what you did NOT
    open and where you drifted into depth.
-8. End with a one-line commit summary.
+8. **Next handoff.** Print at the end of the artifact:
+   > Next: `/study <entry-point-topic>` — pick one entry point from
+   > the scout's table and run a depth pass on it.
+9. End with a one-line commit summary.
 
 Produces orientation, not learning. **Does not mergulhar** — a single
 `/study` is the next move, not a deeper scout. Run again only when the

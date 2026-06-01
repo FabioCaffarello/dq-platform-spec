@@ -25,6 +25,10 @@ template `templates/study.md` before starting.
    keeping "what the reference does / keep / leave behind / I'd do
    differently" cleanly separated.
 7. Write the self-critique honestly — including what you did NOT read.
-8. End with a one-line commit summary.
+8. **Next handoff.** Print at the end of the artifact:
+   > Next: `/study <next-topic>` if more entry points warrant depth,
+   > or `/vision <slug>` if accumulated learning is enough to set a
+   > horizon. One-line reason explaining the choice.
+9. End with a one-line commit summary.
 
 Produces learning, not a decision. Stops at the study.

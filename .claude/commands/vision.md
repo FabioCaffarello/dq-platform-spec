@@ -50,7 +50,11 @@ template `templates/vision.md` before starting.
 10. Write the self-critique honestly — naming the section most likely
     to be a slogan in disguise, and the premise that would force a
     rewrite if it broke.
-11. End with a one-line commit summary.
+11. **Next handoff.** Print at the end of the artifact:
+    > Next: `/brief <slug>` for one pillar — pick the pillar where
+    > the work will land first. Cite it by its stable
+    > `pillar:<vision-slug>:<pillar-slug>` ID.
+12. End with a one-line commit summary.
 
 Produces strategic direction, not a sequence. Run again when the
 underlying problem shifts or a load-bearing premise breaks — not on a

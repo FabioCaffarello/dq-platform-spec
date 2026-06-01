@@ -24,4 +24,8 @@ first.
    Record deferred work with reasons. Stress-test the order.
 6. Self-critique: dependency-driven or comfort-driven? Which item most
    threatens the chain?
-7. One-line commit summary.
+7. **Next handoff.** Print at the end of the artifact:
+   > Next: build per item #1 of the sequence. The roadmap is the
+   > artifact; there is no further `/<command>` to chain into — work
+   > follows.
+8. One-line commit summary.
