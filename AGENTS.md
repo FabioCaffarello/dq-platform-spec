@@ -13,7 +13,7 @@ This is a spec-authoring workspace. You read a pinned reference
 (`dq-platform`, vendored under `references/`) and distill it into the
 documents that guide real development:
 
-```
+```text
 study → system-design → spec → roadmap
 ```
 
