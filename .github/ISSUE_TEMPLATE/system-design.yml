@@ -1,0 +1,50 @@
+# path: .github/ISSUE_TEMPLATE/system-design.yml
+name: System design
+description: Turn accumulated learning into architecture. Output goes under docs/system-design/.
+title: "system-design: <capability>"
+labels: ["type:system-design", "stage:draft"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A system design is the first **published** artifact: it stands
+        alone, without the reader having seen the studies behind it.
+        See `CLAUDE.md` for the chain. Run `/system-design <topic>` in
+        Claude Code / Codex to draft from the template.
+
+  - type: input
+    id: capability
+    attributes:
+      label: Capability
+      description: What the design is about. Becomes the slug.
+      placeholder: e.g. ingestion plane
+    validations:
+      required: true
+
+  - type: textarea
+    id: studies
+    attributes:
+      label: Studies that ground this design
+      description: Link each study; design must cite the learning it builds on.
+      placeholder: |
+        - studies/2026-05-30-event-bus.md
+        - studies/2026-05-31-manifest-schema.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Known boundaries / inputs / outputs
+      description: Where does this start and stop? What feeds it, what consumes it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: failure-modes
+    attributes:
+      label: Failure modes already known
+      description: A design without failure modes is just the happy path.
+      placeholder: e.g. partial write to manifest; consumer ahead of producer
+    validations:
+      required: false

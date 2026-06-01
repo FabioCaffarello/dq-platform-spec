@@ -1,0 +1,52 @@
+# path: .github/labels.yml
+#
+# Source of truth for repository labels. Synced to GitHub by
+# .github/workflows/labels-sync.yml (manual trigger, or on push to
+# main when this file changes). Add or rename labels here, not in
+# the GitHub UI.
+#
+# Three axes:
+#   type:<artifact>   — what the work produces (one of these per issue/PR)
+#   stage:<state>     — where it is in the chain (draft → review → ready)
+#   area:<slice>      — what part of the system it touches (extend freely)
+#
+# Colors use the GitHub palette without the leading "#".
+
+# --- type ---
+- name: "type:study"
+  color: "0e8a16"
+  description: Learning extracted from the reference.
+- name: "type:system-design"
+  color: "1d76db"
+  description: Architecture for a capability.
+- name: "type:spec"
+  color: "5319e7"
+  description: Buildable slice of a system design.
+- name: "type:roadmap"
+  color: "fbca04"
+  description: Sequencing pass over existing specs.
+- name: "type:adr"
+  color: "b60205"
+  description: Durable decision recorded as ADR.
+- name: "type:devops"
+  color: "c5def5"
+  description: Tooling, CI, plumbing — not a chain artifact.
+
+# --- stage ---
+- name: "stage:draft"
+  color: "ededed"
+  description: In progress; not ready for review.
+- name: "stage:review"
+  color: "fef2c0"
+  description: Open for review.
+- name: "stage:ready"
+  color: "0e8a16"
+  description: Approved; ready to merge.
+
+# --- area (extend as the project grows) ---
+- name: "area:references"
+  color: "d4c5f9"
+  description: Reference vendoring, lockfiles, refs-sync.
+- name: "area:tooling"
+  color: "d4c5f9"
+  description: Templates, skills, commands, scripts.

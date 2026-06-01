@@ -1,0 +1,12 @@
+# path: .github/ISSUE_TEMPLATE/config.yml
+# Disable the generic "blank issue" so every issue picks one of the
+# artifact templates. The chain is the method — issues shouldn't
+# escape it without a reason.
+blank_issues_enabled: false
+contact_links:
+  - name: Operating guide (CLAUDE.md)
+    url: https://github.com/FabioCaffarello/dq-platform-spec/blob/main/CLAUDE.md
+    about: The method — the distillation chain, the seven principles, the commands.
+  - name: Contributing
+    url: https://github.com/FabioCaffarello/dq-platform-spec/blob/main/CONTRIBUTING.md
+    about: How a piece of work travels from issue to merge.

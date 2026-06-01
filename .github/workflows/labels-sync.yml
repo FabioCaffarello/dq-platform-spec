@@ -1,0 +1,40 @@
+# path: .github/workflows/labels-sync.yml
+#
+# Reconcile GitHub labels from .github/labels.yml. Runs:
+#   - on demand (workflow_dispatch)
+#   - automatically when labels.yml lands on main
+#
+# Non-destructive by design: labels created outside this file are left
+# alone (delete-other-labels: false). Flip that to true once the file
+# is the undisputed source of truth.
+
+name: Sync labels
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/labels.yml
+      - .github/workflows/labels-sync.yml
+
+permissions:
+  issues: write
+
+concurrency:
+  group: labels-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    name: Reconcile labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync labels
+        uses: EndBug/label-sync@v2
+        with:
+          config-file: .github/labels.yml
+          delete-other-labels: false

@@ -1,0 +1,42 @@
+# path: .github/ISSUE_TEMPLATE/roadmap.yml
+name: Roadmap pass
+description: Sequence existing specs into a plan. Output goes under docs/roadmap/.
+title: "roadmap: <horizon>"
+labels: ["type:roadmap", "stage:draft"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A roadmap pass does not invent scope. It orders specs that
+        already exist and defends the order. See `CLAUDE.md` for the
+        chain. Run `/roadmap` in Claude Code / Codex to draft from the
+        template.
+
+  - type: input
+    id: horizon
+    attributes:
+      label: Horizon
+      description: Which slice of time / scope this pass sequences.
+      placeholder: e.g. Q3 — ingestion plane foundations
+    validations:
+      required: true
+
+  - type: textarea
+    id: candidate-specs
+    attributes:
+      label: Candidate specs
+      description: Specs in scope for this pass. One per line.
+      placeholder: |
+        - docs/specs/manifest-writer.md
+        - docs/specs/ingestion-runner.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: ordering-constraint
+    attributes:
+      label: Key constraint driving the order
+      description: What forces the sequence? Dependency, risk, learning gain, deadline.
+      placeholder: e.g. manifest schema must land before any consumer can be specced
+    validations:
+      required: true
