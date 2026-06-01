@@ -14,13 +14,13 @@ template `templates/brief.md` before starting.
    memory.
 2. Capture the pin (`make refs-status`) — used in the header and
    any citation.
-3. Inventory inputs:
-   - **vision**: every `docs/strategy/*-vision.md`.
-   - **scouts**: every `studies/scout/*.md` (excluding `.gitkeep`).
-   - **studies**: every `studies/*.md` (excluding the `scout/`
-     subdirectory and `.gitkeep`).
-4. If **no vision** exists, the brief has no pillar to operationalize.
-   Tell the operator:
+3. Open `.claude/state/index.yaml` to inventory inputs:
+   - **visions**: entries with `type: vision`. Each carries a
+     `pillars:` list with stable IDs (`pillar:<vision-slug>:<pillar-slug>`).
+   - **scouts**: entries with `type: scout`.
+   - **studies**: entries with `type: study`.
+4. If **no vision** exists in the index, the brief has no pillar to
+   operationalize. Tell the operator:
    > No vision document exists in `docs/strategy/`. A brief takes
    > ONE pillar of an existing vision and turns it into operating
    > context — there is no pillar to point at yet. Run `/vision
@@ -31,9 +31,10 @@ template `templates/brief.md` before starting.
    the brief can stand on the vision and any scout, but the
    self-critique must flag that no depth pass grounds it yet.
 6. Ask the operator (or infer from the slug) which **pillar** of which
-   vision this brief serves. If multiple visions exist, name the file
-   explicitly in the header — a brief without a pillar reference is
-   not a brief.
+   vision this brief serves. Cite the pillar in the header by its
+   stable ID: `> Vision pillar: pillar:<vision-slug>:<pillar-slug>`.
+   The integrity check blocks the commit if the ID doesn't exist in
+   the index — so picking the wrong slug fails fast.
 7. Fill `templates/brief.md` into
    `docs/strategy/<YYYY-MM-DD>-<slug>-brief.md`. The load-bearing
    sections are *Done state* (observable, no fluff), *Out of scope*

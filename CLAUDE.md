@@ -52,7 +52,11 @@ Each artifact distills the one before it. The detail — what good
 looks like, the traps, the template to fill — lives in the matching
 command (`.claude/commands/<name>.md`) and skill
 (`.claude/skills/<name>/SKILL.md`). The catalog is
-[`.claude/skills/README.md`](.claude/skills/README.md).
+[`.claude/skills/README.md`](.claude/skills/README.md). The current
+topology of what exists and how the parts connect lives in
+[`.claude/state/index.yaml`](.claude/state/index.yaml), regenerated
+automatically on commit — read it to know the lay of the land before
+opening any individual artifact file.
 
 You do not have to walk the whole chain every time. A small change
 may be a spec straight from an existing system design. Let the work
