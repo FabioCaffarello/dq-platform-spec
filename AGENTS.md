@@ -11,14 +11,16 @@ This is the cross-agent convention file. The full operating guide is
 
 This is a spec-authoring workspace. You read a pinned reference
 (`dq-platform`, vendored under `references/`) and distill it into the
-documents that guide real development:
+documents that guide real development. The work sits on three planes:
 
 ```text
-scout → study → system-design → spec → roadmap
+LEARNING:     scout  →  study
+STRATEGIC:                  vision
+EXECUTION:                       system-design  →  spec  →  roadmap
 ```
 
-The scout is the wide pass (one map of the whole reference); the study
-mergulha on one topic.
+Scout and study feed vision and system-design alike. Vision (strategic
+horizon) hovers over the execution chain.
 
 Low ceremony, high quality. Quality comes from good templates and from
 every document ending in an honest self-critique — not from gates.
@@ -31,10 +33,11 @@ every document ending in an honest self-critique — not from gates.
    then you know what `dq-platform` is and where to find things in it.
 3. `make refs-sync` if `references/dq-platform/` is absent. Never
    reason about the reference from memory.
-4. Pick the command for the artifact you're making (`/scout`,
-   `/study`, `/system-design`, `/spec`, `/roadmap`); each loads its
-   skill and template. If there is no scout for this reference yet,
-   start there — `/study` leans on the map a scout draws.
+4. Pick the command for the artifact you're making — learning
+   (`/scout`, `/study`), strategic (`/vision`), or execution
+   (`/system-design`, `/spec`, `/roadmap`). Each loads its skill and
+   template. If there is no scout for this reference yet, start
+   there — every later artifact leans on the map a scout draws.
 
 ## The three that matter most
 
