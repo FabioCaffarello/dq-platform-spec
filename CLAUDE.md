@@ -1,0 +1,147 @@
+<!-- path: CLAUDE.md -->
+<!-- audience: Claude Code, Codex CLI, and any other AI coding agent in this workspace -->
+<!-- status: living document. Edit it when it is wrong. -->
+
+# Operating Guide — DQ Platform Spec
+
+This is a **spec-authoring** workspace. You read a reference, and from
+it you produce the documents that guide real development: studies,
+system designs, specs, roadmaps. The product of this repository is
+**thinking made durable** — not code.
+
+The goal is high quality with low ceremony. Quality here does not come
+from gates you must pass; it comes from good templates that make you
+think about the right things, and from the habit of every document
+ending by interrogating itself. There are no numbered acceptance
+criteria, no blocking-finding rituals, no session router. If a step
+ever feels like paperwork, it is wrong — change it.
+
+---
+
+## The distillation chain
+
+Work flows in one direction. Each stage consumes the one before it and
+distills it further.
+
+```
+STUDY            SYSTEM-DESIGN     SPEC              ROADMAP
+of the reference → of the solution → executable      → sequenced
+"what exists,      "how we'll        "exactly what     "in what order,
+ what I learn"      structure it"     to build"          and why"
+```
+
+- **Study** (`studies/`) — you read the pinned reference and extract
+  what matters: the patterns worth keeping, the decisions worth
+  understanding, the traps worth avoiding. A study is *learning*, not
+  a decision.
+- **System design** (`docs/system-design/`) — you turn accumulated
+  learning into architecture: components, boundaries, data flow,
+  failure modes, the shape of the thing.
+- **Spec** (`docs/specs/`) — you turn a slice of the architecture into
+  something buildable: scope, interface, behavior, acceptance.
+- **Roadmap** (`docs/roadmap/`) — you sequence the specs: what comes
+  first, what unblocks what, why this order.
+
+You do not have to walk the whole chain every time. A small change may
+be a spec straight from an existing system design. A new domain starts
+with a study. Let the work decide how far back up the chain you reach —
+but never skip *forward* (no spec without the architecture that frames
+it existing somewhere, even briefly).
+
+`docs/adr/` exists for the rare decision durable enough to record as an
+Architecture Decision Record. Most thinking lives as studies and
+designs; promote to an ADR only when a choice will be referenced
+repeatedly and must not be relitigated.
+
+---
+
+## How the reference feeds the work
+
+The reference (`dq-platform`) is vendored under `references/`, pinned
+to a commit, and **read-only**. Hydrate it with `make refs-sync`
+before reasoning about it — never reason about it from memory.
+
+When a document draws on the reference, it says so plainly, with the
+pin so the claim stays reproducible:
+
+```
+(ref: dq-platform@<short-sha> path/to/file.md §"Section")
+```
+
+That is the whole citation discipline. No more, no less. A claim that
+is your own gets no citation but should be visibly *your* claim, not
+smuggled in as if the reference said it.
+
+---
+
+## Principles (not rules)
+
+These are short on purpose. They are how we keep quality without
+ceremony.
+
+1. **Distill, don't copy.** The reference is input, not a template to
+   clone. Describe its patterns in our own terms and judge them on
+   fit. We are building our thing, not mirroring theirs.
+2. **Read before you reason.** Hydrate the reference and read the
+   actual files. Memory is not a source.
+3. **Every document ends by doubting itself.** The last section of
+   every artifact is a short, honest self-critique: the weakest part,
+   what wasn't validated, what would change the conclusion. This is
+   the quality mechanism — embedded, not a separate round.
+4. **One artifact per session.** Finish a study, a design, a spec, or
+   a roadmap pass. Park adjacent ideas for next time.
+5. **Studies are scaffolding; published docs stand alone.** A system
+   design, spec, or ADR must read without the reader having seen the
+   study or the reference behind it. Don't link published docs back
+   into `studies/`.
+6. **The pin moves deliberately.** Bumping the reference commit is its
+   own change with its own one-line reason — never a side effect.
+7. **Markdown opens with its path.** Every `.md` starts with
+   `<!-- path: ... -->` so it survives being moved or extracted.
+
+When a principle is wrong for the work in front of you, say so and
+change it here. Silent divergence is the only real violation.
+
+---
+
+## How to behave in a session
+
+- **Sketch before you write.** For anything beyond a one-file edit,
+  say in two lines what you're about to produce and why, then go.
+- **Pick the right template.** Each artifact type has one under
+  `templates/`. The matching skill in `.claude/skills/` explains how
+  to think while filling it.
+- **Prefer short and sharp.** Long prose hides the trade-off. Cut.
+- **End with a one-line commit summary** the human can paste.
+
+---
+
+## Commands
+
+Under `.claude/commands/`. Each produces one artifact in the chain.
+
+- `/study <topic>` — read the reference and produce a study in
+  `studies/`.
+- `/system-design <topic>` — turn studies into an architecture doc in
+  `docs/system-design/`.
+- `/spec <topic>` — turn a design slice into a buildable spec in
+  `docs/specs/`.
+- `/roadmap` — sequence existing specs into `docs/roadmap/`.
+
+Skills under `.claude/skills/` carry the craft for each (how to think,
+what good looks like, common traps). Templates under `templates/` carry
+the shape.
+
+---
+
+## Growth
+
+This is minimal on purpose and grows by addition:
+
+- A new reference → new `references/<name>.lock`, add `<name>/` to
+  `.gitignore`, `make refs-sync`. The script already loops over locks.
+- A repeated craft → a new skill under `.claude/skills/`.
+- A new artifact type → a template + a skill + a command, same shape
+  as the four that exist.
+
+Grow by adding, never by rewriting from scratch.

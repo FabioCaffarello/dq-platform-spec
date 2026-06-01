@@ -1,0 +1,12 @@
+# path: references/dq-platform.lock
+#
+# Reference lockfile. VERSIONED (the reference content it points to is NOT).
+# Hydrate with:  make refs-sync
+#
+# To move the pin: change `ref` (and optionally `sha`), in its own commit,
+# with a one-line reason. A pin move is a deliberate act, not a side effect.
+
+name = dq-platform
+url  = https://github.com/FabioCaffarello/dq-platform.git
+ref  = main
+sha  = 41244780c6e48118638fa8a8cabe6b388d83ee20

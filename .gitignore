@@ -1,0 +1,14 @@
+# path: .gitignore
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.env
+.env.local
+.claude/settings.local.json
+
+# Vendored reference content is hydrated, not committed.
+references/dq-platform/

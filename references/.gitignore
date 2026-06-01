@@ -1,0 +1,6 @@
+# path: references/.gitignore
+# Ignore hydrated content; keep the things that rehydrate it.
+*
+!.gitignore
+!*.lock
+!README.md

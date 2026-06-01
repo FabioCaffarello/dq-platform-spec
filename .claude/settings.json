@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make refs-sync*)",
+      "Bash(make refs-status*)",
+      "Bash(make refs-clean*)",
+      "Bash(make help*)",
+      "Bash(git status --short)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git rev-parse *)"
+    ],
+    "deny": [
+      "Edit(references/**)",
+      "Write(references/**)",
+      "Bash(git commit --no-verify*)",
+      "Bash(git push --no-verify*)"
+    ]
+  }
+}
