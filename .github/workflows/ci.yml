@@ -1,0 +1,103 @@
+# path: .github/workflows/ci.yml
+#
+# Mirror of the local gates from .pre-commit-config.yaml plus a link
+# checker and a sanity check on references/*.lock. Local and CI use the
+# SAME hooks — see pre-commit/action below; nothing is re-implemented.
+#
+# Triggers: every pull request and every push to main. Cancels older
+# in-progress runs on the same ref to keep the queue cheap.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Quality gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # fetch-depth: 0 is needed so commitlint can walk the PR commit
+          # range. Cheap on this repo and cleaner than fetching twice.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node
+        # markdownlint-cli2 and the commitlint hook both need Node.
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run pre-commit (all files)
+        # Reuses .pre-commit-config.yaml verbatim. The action caches
+        # ~/.cache/pre-commit keyed on the config hash.
+        uses: pre-commit/action@v3.0.1
+
+      - name: Lint commit messages (PR commits only)
+        if: github.event_name == 'pull_request'
+        # Use the SAME commitlint.config.mjs the commit-msg hook uses.
+        # We install commitlint here because pre-commit's commit-msg
+        # stage runs per-message, not over a range. This keeps the
+        # rules canonical to the project config.
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-audit --no-fund \
+            @commitlint/cli@19
+          npx commitlint \
+            --config commitlint.config.mjs \
+            --from "${{ github.event.pull_request.base.sha }}" \
+            --to   "${{ github.event.pull_request.head.sha }}" \
+            --verbose
+
+      - name: Check internal links (fail on broken)
+        # --offline restricts lychee to file/relative links; remote URLs
+        # are skipped. Broken internal references must fail the build.
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --offline
+            --no-progress
+            --exclude-path references
+            --exclude-path .git
+            './**/*.md'
+          fail: true
+
+      - name: Check external links (warn only)
+        # Network-flaky by nature — surface as a warning, don't block.
+        # Use .lycheeignore in the repo root to silence known offenders.
+        uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
+        with:
+          args: >-
+            --no-progress
+            --exclude-path references
+            --exclude-path .git
+            --include '^https?://'
+            './**/*.md'
+          fail: true
+
+      - name: Validate references/*.lock
+        # Same script the path-of-record local hook uses. Runs over ALL
+        # lockfiles, not just the ones touched by the PR.
+        run: bash scripts/check-refs-lock.sh references/*.lock
+
+      - name: refs-sync status (no hydration)
+        # Confirms the sync script tolerates an un-hydrated reference —
+        # which is exactly the CI state. Must be exit 0.
+        run: bash scripts/refs-sync.sh status

@@ -24,6 +24,12 @@ plumbing de references, os quatro templates, as quatro skills, os
 quatro comandos, e os planos vazios. **Não** versionado: o conteúdo de
 `references/dq-platform/`.
 
+As travas de qualidade são duas: `pre-commit` localmente (instalável
+com `pre-commit install --hook-type pre-commit --hook-type commit-msg`)
+e o workflow `.github/workflows/ci.yml`, que roda exatamente os mesmos
+hooks em todo PR e push para `main`. Local e CI nunca divergem porque
+compartilham o mesmo `.pre-commit-config.yaml`.
+
 ---
 
 ## Fase 2 — Hidratar a reference

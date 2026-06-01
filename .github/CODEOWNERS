@@ -1,0 +1,12 @@
+# path: .github/CODEOWNERS
+#
+# GitHub uses this file to auto-request reviewers. The LAST matching
+# pattern wins, so add narrower rules below the catch-all as ownership
+# grows.
+#
+# Examples — uncomment and adapt when you start delegating areas:
+#   docs/specs/        @some-spec-owner
+#   docs/system-design/ @some-architect
+#   .github/           @FabioCaffarello @devops-team
+
+* @FabioCaffarello

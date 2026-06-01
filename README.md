@@ -48,8 +48,9 @@ See **[`BOOTSTRAP.md`](BOOTSTRAP.md)** for the full walk-through and
 
 ## Qualidade local
 
-Travas locais leves rodam antes de cada commit. São o único gate — sem CI
-bloqueante, sem rituais de revisão.
+Travas leves rodam antes de cada commit. O CI (`.github/workflows/ci.yml`)
+espelha exatamente esses hooks em todo PR e push para `main`, então
+local e servidor nunca divergem. Sem rituais de revisão extra.
 
 ```sh
 pre-commit install --hook-type pre-commit --hook-type commit-msg
@@ -74,5 +75,9 @@ chore(devops): bootstrap pre-commit gates
 `markdownlint-cli2` e `commitlint` precisam de Node disponível no PATH
 (o `pre-commit` cuida do resto, instalando os pacotes em
 `~/.cache/pre-commit/`).
+
+Além do pre-commit, o CI também roda um verificador de links (lychee)
+nos `.md` versionados — links internos quebrados falham o build,
+externos são apenas warning.
 
 [cc]: https://www.conventionalcommits.org/
