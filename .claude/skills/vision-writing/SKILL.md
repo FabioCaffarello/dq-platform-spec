@@ -46,6 +46,15 @@ is published; it must read without the studies behind it. The
 "Informed by" header points at the provenance; the argument doesn't
 depend on it.
 
+**Pillars carry stable IDs.** Each `### <theme name>` heading is
+preceded by `<!-- pillar-id: <slug> -->`. The slug is the handle
+downstream briefs cite as `pillar:<vision-slug>:<pillar-slug>`; it
+survives heading rewordings. Pick slugs that read clearly six
+months from now — short, dash-separated, semantically pointed
+(`rule-pack-ownership`, not `theme-2`). Renaming a slug is a
+real edit that breaks brief citations; the integrity check will
+catch it, but you should avoid the churn.
+
 ## What good looks like
 
 - A new engineer reads it and can name three things this team would

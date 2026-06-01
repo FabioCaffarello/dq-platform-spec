@@ -25,6 +25,14 @@ why, so "we forgot" never masquerades as "we decided."
 breaks? The riskiest item on the critical path is the one to
 de-risk first or sequence earliest.
 
+**The topology is already in the index.** Each `type: spec` entry
+carries the `parent` design ID and its stated dependencies — the
+graph is precomputed, you do not have to rediscover it by reading
+every spec from scratch. Use the index as the dependency map's
+skeleton; open individual specs only to read the dependency lines
+the index does not capture (cross-spec ordering inside the
+*Dependencies* section).
+
 ## What good looks like
 
 - The order is justified by the dependency map, item by item.

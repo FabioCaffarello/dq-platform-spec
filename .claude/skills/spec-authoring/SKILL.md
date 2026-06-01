@@ -26,6 +26,15 @@ the check, you haven't specified the behavior.
 the roadmap consumes to sequence work. A spec with hidden dependencies
 breaks the roadmap silently.
 
+**The design must frame the slice.** Cite the parent in the header as
+`> Design: design:<slug>`. Before writing, open that design and
+confirm the slice is named in its `### Components` or
+`### Boundaries and contracts` — by component name, boundary, or
+clearly-bounded responsibility (synonyms and paraphrases count). A
+spec written against a design that does not frame the slice is the
+silent failure the coverage guard exists to catch; the right
+discipline is to notice it before writing, not on the guard's stop.
+
 ## What good looks like
 
 - The scope is one buildable slice with crisp in/out lists.
