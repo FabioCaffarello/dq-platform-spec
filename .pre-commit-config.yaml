@@ -43,6 +43,18 @@ repos:
         # Override the top-level exclude: lockfiles ARE versioned.
         exclude: '^$'
 
+      - id: reference-pin
+        name: "reference-pin (warn on map vs lock SHA drift)"
+        entry: scripts/check-reference-pin.sh
+        language: script
+        # Non-blocking warning: always exits 0; output is visible
+        # because pre-commit shows hook stderr on the line.
+        pass_filenames: false
+        # Run only when one of the two coupled files changes — this
+        # keeps the hook out of the way on unrelated commits.
+        files: '^(\.claude/reference-map\.md|references/dq-platform\.lock)$'
+        verbose: true
+
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
     rev: v9.22.0
     hooks:

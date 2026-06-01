@@ -17,9 +17,11 @@ else mergulha.
 Before producing anything:
 
 1. Read `../CLAUDE.md`.
-2. `make refs-sync` if `../references/dq-platform/` is absent; do not
+2. Skim `../.claude/reference-map.md` — the hand-maintained "you are
+   here" for the reference. Quick orientation before any depth pass.
+3. `make refs-sync` if `../references/dq-platform/` is absent; do not
    bump the pin (that's a deliberate, separate change).
-3. Use the command matching your artifact; each loads its skill
+4. Use the command matching your artifact; each loads its skill
    (`../.claude/skills/`) and template (`../templates/`).
 
 If this file and `../CLAUDE.md` ever disagree, `CLAUDE.md` wins.
