@@ -24,12 +24,17 @@ Work flows in one direction. Each stage consumes the one before it and
 distills it further.
 
 ```text
-STUDY            SYSTEM-DESIGN     SPEC              ROADMAP
-of the reference → of the solution → executable      → sequenced
-"what exists,      "how we'll        "exactly what     "in what order,
- what I learn"      structure it"     to build"          and why"
+SCOUT             STUDY            SYSTEM-DESIGN     SPEC              ROADMAP
+of the reference→ of a topic     → of the solution → executable      → sequenced
+"what's there,    "what I learn    "how we'll        "exactly what     "in what order,
+ in one map"       going deep"      structure it"     to build"          and why"
 ```
 
+- **Scout** (`studies/scout/`) — the wide pass. Once per reference (or
+  again after a big pin move), you map what the reference IS and
+  DOES: top-level shape, capabilities, vocabulary, structural
+  decisions, and the topics that earn a future `/study`. A scout
+  *orients*; it does not mergulhar.
 - **Study** (`studies/`) — you read the pinned reference and extract
   what matters: the patterns worth keeping, the decisions worth
   understanding, the traps worth avoiding. A study is *learning*, not
@@ -44,9 +49,10 @@ of the reference → of the solution → executable      → sequenced
 
 You do not have to walk the whole chain every time. A small change may
 be a spec straight from an existing system design. A new domain starts
-with a study. Let the work decide how far back up the chain you reach —
-but never skip *forward* (no spec without the architecture that frames
-it existing somewhere, even briefly).
+with a study — opened on the map the scout already drew. Let the work
+decide how far back up the chain you reach — but never skip *forward*
+(no spec without the architecture that frames it existing somewhere,
+even briefly).
 
 `docs/adr/` exists for the rare decision durable enough to record as an
 Architecture Decision Record. Most thinking lives as studies and
@@ -120,6 +126,9 @@ change it here. Silent divergence is the only real violation.
 
 Under `.claude/commands/`. Each produces one artifact in the chain.
 
+- `/scout <slug>` — wide pass over the reference; produces a map in
+  `studies/scout/`. Run once per reference, or again after a pin move
+  that invalidates it.
 - `/study <topic>` — read the reference and produce a study in
   `studies/`.
 - `/system-design <topic>` — turn studies into an architecture doc in
