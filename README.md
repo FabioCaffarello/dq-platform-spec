@@ -6,7 +6,7 @@ A spec-authoring workspace. You read a pinned **reference**
 ([`dq-platform`](https://github.com/FabioCaffarello/dq-platform)) and
 distill it into the documents that guide real development.
 
-```
+```text
 study → system-design → spec → roadmap
 ```
 
@@ -36,7 +36,7 @@ make help           # all targets
 
 Then open Claude Code or Codex here and run a command:
 
-```
+```text
 /study <topic>          # read the reference, extract learning
 /system-design <topic>  # turn learning into architecture
 /spec <topic>           # turn a design slice into a buildable spec
@@ -45,3 +45,34 @@ Then open Claude Code or Codex here and run a command:
 
 See **[`BOOTSTRAP.md`](BOOTSTRAP.md)** for the full walk-through and
 **[`CLAUDE.md`](CLAUDE.md)** for the operating guide.
+
+## Qualidade local
+
+Travas locais leves rodam antes de cada commit. São o único gate — sem CI
+bloqueante, sem rituais de revisão.
+
+```sh
+pre-commit install --hook-type pre-commit --hook-type commit-msg
+pre-commit run --all-files
+```
+
+Os hooks cobrem markdown (`markdownlint-cli2` com config própria em
+`.markdownlint.yaml`), higiene de arquivos (trailing whitespace,
+final-of-file, YAML válido, sem marcadores de merge), a regra do
+path-header do `CLAUDE.md` (todo `.md` começa com `<!-- path: ... -->`),
+e a integridade de `references/*.lock`.
+
+Mensagens de commit seguem [Conventional Commits][cc] e são validadas
+pelo hook `commit-msg` (`commitlint`). Exemplos:
+
+```text
+feat: add roadmap template
+fix(refs-sync): handle missing lockfile
+chore(devops): bootstrap pre-commit gates
+```
+
+`markdownlint-cli2` e `commitlint` precisam de Node disponível no PATH
+(o `pre-commit` cuida do resto, instalando os pacotes em
+`~/.cache/pre-commit/`).
+
+[cc]: https://www.conventionalcommits.org/

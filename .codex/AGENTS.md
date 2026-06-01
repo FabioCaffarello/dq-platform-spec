@@ -13,6 +13,7 @@ study → system-design → spec → roadmap. Low ceremony; quality comes
 from good templates and an honest self-critique ending every document.
 
 Before producing anything:
+
 1. Read `../CLAUDE.md`.
 2. `make refs-sync` if `../references/dq-platform/` is absent; do not
    bump the pin (that's a deliberate, separate change).

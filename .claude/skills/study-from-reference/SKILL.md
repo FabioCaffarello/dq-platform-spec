@@ -20,6 +20,7 @@ manifest with a generation-conditional pointer write" becomes useful
 only when you say what that buys and whether we have the same need.
 
 **Separate three things cleanly:**
+
 - what the reference *does* (fact, cited),
 - what's *worth keeping* for us (judgment, justified by fit),
 - what *you'd do differently* (your idea, marked as yours).

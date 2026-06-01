@@ -1,0 +1,37 @@
+# path: .markdownlint.yaml
+#
+# Our markdown is prose, not docs-site. Defaults are too aggressive,
+# so we relax line length, allow HTML (the path-header is an HTML
+# comment), and let the first element be that comment instead of a
+# top-level heading.
+
+default: true
+
+# MD013 — line length. Generous for prose, lenient where wrapping hurts.
+MD013:
+  line_length: 100
+  code_blocks: false
+  tables: false
+  headings: false
+  strict: false
+  stern: false
+
+# Allow inline HTML — we use <!-- path: ... --> headers and a few
+# comment-tagged template hints.
+MD033: false
+
+# The first line of every file is the HTML path-header, not an h1.
+MD041: false
+
+# Bare URLs are fine when they're the most honest way to cite.
+MD034: false
+
+# Duplicate headings under different parents (e.g. several specs each
+# having a "Scope" section) are expected; only flag duplicates that
+# are siblings.
+MD024:
+  siblings_only: true
+
+# Trailing punctuation in headings: allow question marks.
+MD026:
+  punctuation: ".,;:!"

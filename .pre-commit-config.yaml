@@ -1,0 +1,52 @@
+# path: .pre-commit-config.yaml
+#
+# Local quality gates for a markdown-first repo. Run with:
+#   pre-commit install --hook-type pre-commit --hook-type commit-msg
+#   pre-commit run --all-files
+#
+# Markdownlint and commitlint require Node (npm) — both hooks vendor
+# their own deps under ~/.cache/pre-commit, no global install needed.
+
+minimum_pre_commit_version: "3.0.0"
+
+# references/ is read-only vendored content; never touch it.
+exclude: '^references/'
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-merge-conflict
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.18.1
+    hooks:
+      - id: markdownlint-cli2
+
+  - repo: local
+    hooks:
+      - id: path-header
+        name: "path-header (every .md opens with <!-- path: ... -->)"
+        entry: scripts/check-path-header.sh
+        language: script
+        types: [markdown]
+        # references/ is already filtered by the top-level exclude.
+
+      - id: refs-lock
+        name: "refs-lock (references/*.lock has name/url/ref)"
+        entry: scripts/check-refs-lock.sh
+        language: script
+        files: '^references/.*\.lock$'
+        # Override the top-level exclude: lockfiles ARE versioned.
+        exclude: '^$'
+
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.22.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        # The Conventional Commits ruleset is inlined in
+        # commitlint.config.mjs — no extends, no extra deps needed.

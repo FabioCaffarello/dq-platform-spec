@@ -23,7 +23,7 @@ ever feels like paperwork, it is wrong — change it.
 Work flows in one direction. Each stage consumes the one before it and
 distills it further.
 
-```
+```text
 STUDY            SYSTEM-DESIGN     SPEC              ROADMAP
 of the reference → of the solution → executable      → sequenced
 "what exists,      "how we'll        "exactly what     "in what order,
@@ -64,7 +64,7 @@ before reasoning about it — never reason about it from memory.
 When a document draws on the reference, it says so plainly, with the
 pin so the claim stays reproducible:
 
-```
+```text
 (ref: dq-platform@<short-sha> path/to/file.md §"Section")
 ```
 
