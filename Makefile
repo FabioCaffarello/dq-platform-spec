@@ -1,6 +1,6 @@
 # path: Makefile
 .DEFAULT_GOAL := help
-.PHONY: help refs-sync refs-status refs-clean
+.PHONY: help refs-sync refs-status refs-clean index
 
 help: ## List available targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort \
@@ -14,3 +14,6 @@ refs-status: ## Show pinned ref vs. what is on disk
 
 refs-clean: ## Remove hydrated reference content (lockfiles stay)
 	@bash scripts/refs-sync.sh clean
+
+index: ## Regenerate .claude/state/index.yaml from artifact headers
+	@python3 scripts/build-index.py
