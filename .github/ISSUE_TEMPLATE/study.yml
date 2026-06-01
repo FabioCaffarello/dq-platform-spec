@@ -1,0 +1,51 @@
+# path: .github/ISSUE_TEMPLATE/study.yml
+name: Study
+description: Read the reference and extract learning. Output goes under studies/.
+title: "study: <topic>"
+labels: ["type:study", "stage:draft"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A study is **learning**, not a decision. It produces a file in
+        `studies/` that distills what the reference does, what is worth
+        keeping for us, and what to leave behind. See `CLAUDE.md` for
+        the chain. Run `/study <topic>` in Claude Code / Codex to draft
+        it from the matching template.
+
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      description: One short phrase. This becomes the slug.
+      placeholder: e.g. ingestion manifest schema
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Reference scope
+      description: Which files / sections of the reference to read.
+      placeholder: |
+        - ref: dq-platform@<sha> path/to/file.md §"Section"
+        - ref: dq-platform@<sha> another/path.py
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: What I want to learn
+      description: One or two sentences. Frames the study's "Question" section.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Why now / related work
+      description: Any existing study, design, or spec this builds on.
+      placeholder: e.g. follows studies/2026-05-30-event-bus.md
+    validations:
+      required: false

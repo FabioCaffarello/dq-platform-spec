@@ -9,6 +9,7 @@ Thumbs.db
 .env
 .env.local
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
 
 # Vendored reference content is hydrated, not committed.
 references/dq-platform/

@@ -43,8 +43,10 @@ Then open Claude Code or Codex here and run a command:
 /roadmap                # sequence the specs
 ```
 
-See **[`BOOTSTRAP.md`](BOOTSTRAP.md)** for the full walk-through and
-**[`CLAUDE.md`](CLAUDE.md)** for the operating guide.
+See **[`BOOTSTRAP.md`](BOOTSTRAP.md)** for the full walk-through,
+**[`CLAUDE.md`](CLAUDE.md)** for the operating guide, and
+**[`CONTRIBUTING.md`](CONTRIBUTING.md)** for how a piece of work
+travels from issue to merge.
 
 ## Qualidade local
 

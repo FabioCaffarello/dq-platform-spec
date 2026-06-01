@@ -1,0 +1,51 @@
+# path: .github/ISSUE_TEMPLATE/spec.yml
+name: Spec
+description: Take a slice of a system design and make it buildable. Output goes under docs/specs/.
+title: "spec: <slice>"
+labels: ["type:spec", "stage:draft"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A spec is the buildable handoff: scope, interface, behavior,
+        acceptance. One buildable slice per spec. See `CLAUDE.md` for
+        the chain. Run `/spec <topic>` in Claude Code / Codex to draft
+        from the template.
+
+  - type: input
+    id: slice
+    attributes:
+      label: Slice
+      description: The buildable slice this spec covers. Becomes the slug.
+      placeholder: e.g. manifest writer for ingestion plane
+    validations:
+      required: true
+
+  - type: input
+    id: parent-design
+    attributes:
+      label: Parent system design
+      description: The system design this spec carves a slice out of.
+      placeholder: e.g. docs/system-design/ingestion-plane.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Other specs, ADRs, or external work this assumes.
+      placeholder: |
+        - docs/specs/<other-spec>.md (must land first)
+        - docs/adr/0003-pin-policy.md
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance (one line)
+      description: A verifiable outcome — "X returns Y for Z", not "code reviewed".
+      placeholder: e.g. writer emits one manifest per batch with run_id and source_sha set
+    validations:
+      required: true
