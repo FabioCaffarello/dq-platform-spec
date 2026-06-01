@@ -10,11 +10,18 @@ first.
 1. Open `.claude/state/index.yaml`. Inventory entries with
    `type: spec` and their `parent` IDs (each spec's design); open
    each spec only to read its *Dependencies* section.
-2. Build the dependency map first; read the order off it.
-3. Fill `templates/roadmap.md` into
+2. If **no `type: spec` entries exist** in the index, the roadmap
+   has nothing to sequence. Tell the operator:
+   > No specs exist in `docs/specs/`. A roadmap orders existing
+   > specs — there is nothing to sequence yet. Run `/spec` for the
+   > slices you want to ship; come back when at least one spec exists.
+
+   Then stop.
+3. Build the dependency map first; read the order off it.
+4. Fill `templates/roadmap.md` into
    `docs/roadmap/<YYYY-MM-DD>-roadmap.md`.
-4. For each item, name what it unblocks and why it sits where it does.
+5. For each item, name what it unblocks and why it sits where it does.
    Record deferred work with reasons. Stress-test the order.
-5. Self-critique: dependency-driven or comfort-driven? Which item most
+6. Self-critique: dependency-driven or comfort-driven? Which item most
    threatens the chain?
-6. One-line commit summary.
+7. One-line commit summary.
