@@ -14,13 +14,18 @@ This is a spec-authoring workspace. You read a pinned reference
 documents that guide real development. The work sits on three planes:
 
 ```text
-LEARNING:     scout  →  study
-STRATEGIC:                  vision
-EXECUTION:                       system-design  →  spec  →  roadmap
+Learning   :  scout  →  study
+                          │
+                          ▼
+Strategic  :            vision  →  brief
+                                     │
+                                     ▼
+Execution  :                       system-design  →  spec  →  roadmap
 ```
 
-Scout and study feed vision and system-design alike. Vision (strategic
-horizon) hovers over the execution chain.
+Scouts and studies feed the strategic plane; vision sets the horizon
+and brief turns one pillar into operating context an agent can carry.
+The execution chain answers to the brief above it.
 
 Low ceremony, high quality. Quality comes from good templates and from
 every document ending in an honest self-critique — not from gates.
@@ -34,10 +39,11 @@ every document ending in an honest self-critique — not from gates.
 3. `make refs-sync` if `references/dq-platform/` is absent. Never
    reason about the reference from memory.
 4. Pick the command for the artifact you're making — learning
-   (`/scout`, `/study`), strategic (`/vision`), or execution
-   (`/system-design`, `/spec`, `/roadmap`). Each loads its skill and
-   template. If there is no scout for this reference yet, start
-   there — every later artifact leans on the map a scout draws.
+   (`/scout`, `/study`), strategic (`/vision`, `/brief`), or
+   execution (`/system-design`, `/spec`, `/roadmap`). Each loads
+   its skill and template. If there is no scout for this reference
+   yet, start there — every later artifact leans on the map a scout
+   draws.
 
 ## The three that matter most
 

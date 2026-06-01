@@ -25,9 +25,11 @@ Work in this repository sits on three planes that feed one another:
 - **Learning** — `studies/scout/` (the wide map) and `studies/` (the
   depth passes). What the reference IS and what we have learned from
   it. Scaffolding, not published.
-- **Strategic** — `docs/strategy/`. The *vision*: where we are going
-  and why. Fed by learning; hovers over execution; durable until a
-  load-bearing premise breaks.
+- **Strategic** — `docs/strategy/`. Two artifacts:
+  *vision* (long-horizon: where we are going and why) and
+  *brief* (one pillar of the vision turned into operating context an
+  agent can act on autonomously). Fed by learning; hovers over
+  execution.
 - **Execution** — `docs/system-design/`, `docs/specs/`,
   `docs/roadmap/`. How we get there: architecture, buildable slices,
   sequence. Each artifact answers to the strategic plane above and
@@ -44,11 +46,19 @@ The execution plane flows in one direction. Each stage consumes the
 one before it and distills it further.
 
 ```text
-SCOUT             STUDY            SYSTEM-DESIGN     SPEC              ROADMAP
-of the reference→ of a topic     → of the solution → executable      → sequenced
-"what's there,    "what I learn    "how we'll        "exactly what     "in what order,
- in one map"       going deep"      structure it"     to build"          and why"
+Learning   :  scout  →  study
+                          │
+                          ▼
+Strategic  :            vision  →  brief
+                                     │
+                                     ▼
+Execution  :                       system-design  →  spec  →  roadmap
 ```
+
+Read top-to-bottom: each plane feeds the one below. Read left-to-right
+within a plane: each artifact distills the one before it. Vision and
+brief both live in `docs/strategy/`; system-design, spec, roadmap each
+get their own subdirectory under `docs/`.
 
 - **Scout** (`studies/scout/`) — the wide pass. Once per reference (or
   again after a big pin move), you map what the reference IS and
@@ -59,9 +69,19 @@ of the reference→ of a topic     → of the solution → executable      → s
   what matters: the patterns worth keeping, the decisions worth
   understanding, the traps worth avoiding. A study is *learning*, not
   a decision.
+- **Vision** (`docs/strategy/`) — the long horizon: where we are
+  going, why now, the principles that guide trade-offs, and what we
+  explicitly refuse. Strategic plane. Durable until a load-bearing
+  premise breaks.
+- **Brief** (`docs/strategy/`) — one pillar of the vision turned into
+  operating context: mission, observable done state, in/out of scope,
+  decisions already made (cited), and the *decision principle* an
+  agent uses when reality deviates from the explicit list. Strategic
+  plane. One brief per initiative.
 - **System design** (`docs/system-design/`) — you turn accumulated
   learning into architecture: components, boundaries, data flow,
-  failure modes, the shape of the thing.
+  failure modes, the shape of the thing. Answers to the brief that
+  framed the initiative (if one exists).
 - **Spec** (`docs/specs/`) — you turn a slice of the architecture into
   something buildable: scope, interface, behavior, acceptance.
 - **Roadmap** (`docs/roadmap/`) — you sequence the specs: what comes
@@ -117,9 +137,9 @@ ceremony.
 4. **One artifact per session.** Finish a study, a design, a spec, or
    a roadmap pass. Park adjacent ideas for next time.
 5. **Studies are scaffolding; published docs stand alone.** A vision,
-   system design, spec, or ADR must read without the reader having
-   seen the study or the reference behind it. Don't link published
-   docs back into `studies/`.
+   brief, system design, spec, or ADR must read without the reader
+   having seen the study or the reference behind it. Don't link
+   published docs back into `studies/`.
 6. **The pin moves deliberately.** Bumping the reference commit is its
    own change with its own one-line reason — never a side effect.
 7. **Markdown opens with its path.** Every `.md` starts with
@@ -161,6 +181,9 @@ Strategic:
   scouts and studies; produces a vision document in
   `docs/strategy/`. Run when starting a new horizon or when a
   load-bearing premise breaks — not on a schedule.
+- `/brief <slug>` — turn one pillar of an existing vision into
+  operating context an agent can carry over months; produces a brief
+  in `docs/strategy/`. Run once per initiative.
 
 Execution:
 

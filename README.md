@@ -4,27 +4,41 @@
 
 A spec-authoring workspace. You read a pinned **reference**
 ([`dq-platform`](https://github.com/FabioCaffarello/dq-platform)) and
-distill it into the documents that guide real development.
+distill it through three planes into the documents that guide real
+development.
 
 ```text
-study → system-design → spec → roadmap
+Learning   :  scout  →  study
+                          │
+                          ▼
+Strategic  :            vision  →  brief
+                                     │
+                                     ▼
+Execution  :                       system-design  →  spec  →  roadmap
 ```
 
 Low ceremony, high quality. There are no gates and no acceptance-criteria
 rituals. Quality comes from good templates that make you think about the
 right things, and from every document ending in an honest self-critique.
+The same documents that guide humans guide AI agents — over months,
+without re-deriving the context every time.
 
 ## The planes
 
 - **`references/`** — vendored upstream material, pinned by a lockfile.
   Content is git-ignored; the lockfile is versioned. Read-only.
 - **`studies/`** — learning extracted from the reference. Scaffolding.
-- **`docs/system-design/`** — architecture. The first published plane.
+  `studies/scout/` holds the wide map; `studies/` holds depth passes.
+- **`docs/strategy/`** — strategic plane. *Vision* sets the long
+  horizon; *brief* turns one pillar into operating context an agent
+  can carry for months.
+- **`docs/system-design/`** — architecture. The first execution plane.
 - **`docs/specs/`** — buildable specs handed to implementers.
 - **`docs/roadmap/`** — specs sequenced into a plan.
 - **`docs/adr/`** — the rare decision durable enough to record formally.
 - **`templates/`** + **`.claude/skills/`** — the shape and the craft for
-  each artifact type.
+  each artifact type. `.claude/reference-map.md` is the hand-maintained
+  "you are here" for the reference.
 
 ## Quick start
 
@@ -37,7 +51,10 @@ make help           # all targets
 Then open Claude Code or Codex here and run a command:
 
 ```text
-/study <topic>          # read the reference, extract learning
+/scout <slug>           # wide pass: map what the reference IS and DOES
+/study <topic>          # depth pass: extract learning on one topic
+/vision <slug>          # set the long-horizon direction
+/brief <slug>           # turn one vision pillar into agent-operable context
 /system-design <topic>  # turn learning into architecture
 /spec <topic>           # turn a design slice into a buildable spec
 /roadmap                # sequence the specs
