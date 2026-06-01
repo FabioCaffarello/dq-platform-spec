@@ -55,6 +55,16 @@ repos:
         files: '^(\.claude/reference-map\.md|references/dq-platform\.lock)$'
         verbose: true
 
+      - id: artifact-index
+        name: "artifact-index (regen .claude/state/index.yaml + integrity)"
+        entry: scripts/build-index.py
+        language: script
+        pass_filenames: false
+        # Regen auto-stages on change. Hard-fail only on broken parent
+        # links — those are real errors, not regen noise.
+        files: '^(studies/.*\.md|docs/(strategy|system-design|specs|roadmap|adr)/.*\.md|\.claude/state/index\.yaml|references/dq-platform\.lock)$'
+        verbose: true
+
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
     rev: v9.22.0
     hooks:

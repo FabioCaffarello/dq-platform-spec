@@ -7,7 +7,9 @@ Sequence existing specs into a roadmap. Introduces no new scope.
 Load `.claude/skills/roadmapping/SKILL.md` and `templates/roadmap.md`
 first.
 
-1. Inventory the specs in `docs/specs/` and their stated dependencies.
+1. Open `.claude/state/index.yaml`. Inventory entries with
+   `type: spec` and their `parent` IDs (each spec's design); open
+   each spec only to read its *Dependencies* section.
 2. Build the dependency map first; read the order off it.
 3. Fill `templates/roadmap.md` into
    `docs/roadmap/<YYYY-MM-DD>-roadmap.md`.

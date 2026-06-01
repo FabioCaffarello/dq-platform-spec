@@ -59,10 +59,19 @@
      For each pillar, write a one-paragraph description of what it
      covers, what's inside and outside it, and one sentence on why
      it earns a pillar. Cite the reference where leaning on it:
-     (ref: dq-platform@<sha> path §"Section"). -->
+     (ref: dq-platform@<sha> path §"Section").
 
+     IMPORTANT — pillar-id convention. Add a stable ID per pillar via
+     an HTML comment immediately before the heading:
+       <!-- pillar-id: <slug> -->
+     The slug is lowercase, dash-separated, and stable across edits.
+     Briefs cite the pillar by `pillar:<vision-slug>:<pillar-slug>` —
+     renaming the heading must not break the link. -->
+
+<!-- pillar-id: rename-me-1 -->
 ### First theme name (rename or remove me)
 
+<!-- pillar-id: rename-me-2 -->
 ### Second theme name (rename or remove me)
 
 ## Signals we're on the right path

@@ -12,8 +12,17 @@
 
 > Status: draft | reviewed | active | retired
 > Horizon: <e.g. Q3 2026 | "until the manifest writer ships">
-> Vision pillar: `docs/strategy/<…>-vision.md` §"<theme name>"
+> Vision pillar: pillar:<vision-slug>:<pillar-slug>
 > Reference pin (when leaning on it): dq-platform@<short-sha> (`make refs-status`)
+
+<!-- "Vision pillar" is the STABLE ID of the pillar this brief
+     operationalizes. Find the ID in .claude/state/index.yaml under
+     the vision's `pillars:` list — it derives from the vision's
+     filename slug and the `<!-- pillar-id: ... -->` comment in the
+     vision body. Citing the ID (not the heading text) keeps the
+     link from breaking if the heading is reworded. The integrity
+     check in pre-commit blocks the commit if the cited ID does not
+     exist in the index. -->
 
 ## Mission
 <!-- One paragraph. The slice of the vision this initiative advances,
