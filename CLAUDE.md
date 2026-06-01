@@ -18,10 +18,30 @@ ever feels like paperwork, it is wrong — change it.
 
 ---
 
+## Three planes
+
+Work in this repository sits on three planes that feed one another:
+
+- **Learning** — `studies/scout/` (the wide map) and `studies/` (the
+  depth passes). What the reference IS and what we have learned from
+  it. Scaffolding, not published.
+- **Strategic** — `docs/strategy/`. The *vision*: where we are going
+  and why. Fed by learning; hovers over execution; durable until a
+  load-bearing premise breaks.
+- **Execution** — `docs/system-design/`, `docs/specs/`,
+  `docs/roadmap/`. How we get there: architecture, buildable slices,
+  sequence. Each artifact answers to the strategic plane above and
+  draws on the learning plane below.
+
+`docs/adr/` cuts across the planes: any decision durable enough to
+deserve a name lives there.
+
+---
+
 ## The distillation chain
 
-Work flows in one direction. Each stage consumes the one before it and
-distills it further.
+The execution plane flows in one direction. Each stage consumes the
+one before it and distills it further.
 
 ```text
 SCOUT             STUDY            SYSTEM-DESIGN     SPEC              ROADMAP
@@ -96,10 +116,10 @@ ceremony.
    the quality mechanism — embedded, not a separate round.
 4. **One artifact per session.** Finish a study, a design, a spec, or
    a roadmap pass. Park adjacent ideas for next time.
-5. **Studies are scaffolding; published docs stand alone.** A system
-   design, spec, or ADR must read without the reader having seen the
-   study or the reference behind it. Don't link published docs back
-   into `studies/`.
+5. **Studies are scaffolding; published docs stand alone.** A vision,
+   system design, spec, or ADR must read without the reader having
+   seen the study or the reference behind it. Don't link published
+   docs back into `studies/`.
 6. **The pin moves deliberately.** Bumping the reference commit is its
    own change with its own one-line reason — never a side effect.
 7. **Markdown opens with its path.** Every `.md` starts with
@@ -124,18 +144,32 @@ change it here. Silent divergence is the only real violation.
 
 ## Commands
 
-Under `.claude/commands/`. Each produces one artifact in the chain.
+Under `.claude/commands/`. Each produces one artifact, grouped by
+plane.
+
+Learning:
 
 - `/scout <slug>` — wide pass over the reference; produces a map in
   `studies/scout/`. Run once per reference, or again after a pin move
   that invalidates it.
 - `/study <topic>` — read the reference and produce a study in
   `studies/`.
+
+Strategic:
+
+- `/vision <slug>` — set the long-horizon direction, drawing on
+  scouts and studies; produces a vision document in
+  `docs/strategy/`. Run when starting a new horizon or when a
+  load-bearing premise breaks — not on a schedule.
+
+Execution:
+
 - `/system-design <topic>` — turn studies into an architecture doc in
-  `docs/system-design/`.
+  `docs/system-design/`, answering to the vision above.
 - `/spec <topic>` — turn a design slice into a buildable spec in
   `docs/specs/`.
-- `/roadmap` — sequence existing specs into `docs/roadmap/`.
+- `/roadmap` — sequence existing specs into `docs/roadmap/`, in
+  service of the vision.
 
 Skills under `.claude/skills/` carry the craft for each (how to think,
 what good looks like, common traps). Templates under `templates/` carry
