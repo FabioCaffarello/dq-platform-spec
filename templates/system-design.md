@@ -8,7 +8,14 @@
 # System Design — <name>
 
 > Status: draft | reviewed | stable
+> Brief: brief:<slug> (omit if no strategic brief frames this design)
 > Informed by: <studies/… filenames> (provenance only; this doc stands alone)
+
+<!-- "Brief" is the STABLE ID of the brief this design answers to.
+     Find it in .claude/state/index.yaml. If no brief frames this
+     initiative yet, omit the line entirely — the chain allows it,
+     but the self-critique should note what strategic framing is
+     missing. -->
 
 ## Problem
 <!-- What are we building and why does it need to exist? 3-5 sentences.

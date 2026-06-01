@@ -8,7 +8,11 @@
 # Spec — <name>
 
 > Status: draft | ready | building | done
-> Design: docs/system-design/<NN>-<slug>.md (the architecture this implements)
+> Design: design:<slug> (the architecture this implements)
+
+<!-- "Design" is the STABLE ID of the system-design this spec slices.
+     Find it in .claude/state/index.yaml. The integrity check blocks
+     the commit if the cited ID does not exist. -->
 
 ## Summary
 <!-- One paragraph: what this spec delivers when built. -->
