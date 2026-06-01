@@ -37,8 +37,10 @@ that share a `go.work` and a common ADR backbone
 ## Where to find what
 
 - **AI agent contract** (hard rules R1–R8, principles P1–P6,
-  slash-command catalog) — [`CLAUDE.md`](../references/dq-platform/CLAUDE.md).
-  `AGENTS.md` at the root is a thin pointer to it.
+  slash-command catalog) — `CLAUDE.md` at the reference root.
+  `AGENTS.md` is a thin pointer to it. (Paths under `references/`
+  are gitignored hydrated content; not linked from here so CI link
+  checks stay clean.)
 - **Architecture Decision Records** — `docs/adr/` (MADR-aligned).
   ADRs `0001–0013` cover Wave 1 (compatibility, identity, storage,
   failure scope, manifest publication, alerting, loader semantics)
