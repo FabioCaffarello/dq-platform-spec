@@ -1,49 +1,22 @@
 <!-- path: AGENTS.md -->
 <!-- audience: any AI coding agent that reads AGENTS.md by convention -->
-<!-- status: living document, kept in sync with CLAUDE.md -->
+<!-- status: thin pointer; the operating guide is CLAUDE.md -->
 
 # Agents Entry Point — DQ Platform Spec
 
-This is the cross-agent convention file. The full operating guide is
-**[`CLAUDE.md`](./CLAUDE.md)** — read it before producing anything.
-
-## In one breath
-
-This is a spec-authoring workspace. You read a pinned reference
-(`dq-platform`, vendored under `references/`) and distill it into the
-documents that guide real development. The work sits on three planes:
-
-```text
-Learning   :  scout  →  study
-                          │
-                          ▼
-Strategic  :            vision  →  brief
-                                     │
-                                     ▼
-Execution  :                       system-design  →  spec  →  roadmap
-```
-
-Scouts and studies feed the strategic plane; vision sets the horizon
-and brief turns one pillar into operating context an agent can carry.
-The execution chain answers to the brief above it.
-
-Low ceremony, high quality. Quality comes from good templates and from
-every document ending in an honest self-critique — not from gates.
+The full operating guide is **[`CLAUDE.md`](./CLAUDE.md)** — read it
+before producing anything. This file exists for agents that look for
+`AGENTS.md` by convention.
 
 ## Before you start
 
-1. Read `CLAUDE.md` (the chain, the seven principles, the commands).
-2. Skim [`.claude/reference-map.md`](./.claude/reference-map.md) — the
-   hand-maintained "you are here" for the reference. Two minutes;
-   then you know what `dq-platform` is and where to find things in it.
-3. `make refs-sync` if `references/dq-platform/` is absent. Never
+1. Read `CLAUDE.md` (three planes, citation discipline, seven
+   principles).
+2. `make refs-sync` if `references/dq-platform/` is absent. Never
    reason about the reference from memory.
-4. Pick the command for the artifact you're making — learning
-   (`/scout`, `/study`), strategic (`/vision`, `/brief`), or
-   execution (`/system-design`, `/spec`, `/roadmap`). Each loads
-   its skill and template. If there is no scout for this reference
-   yet, start there — every later artifact leans on the map a scout
-   draws.
+3. Pick the command for your artifact under `.claude/commands/`. Each
+   loads its skill and template. Catalog:
+   [`.claude/skills/README.md`](./.claude/skills/README.md).
 
 ## The three that matter most
 

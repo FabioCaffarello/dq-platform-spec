@@ -38,13 +38,6 @@ Work in this repository sits on three planes that feed one another:
 `docs/adr/` cuts across the planes: any decision durable enough to
 deserve a name lives there.
 
----
-
-## The distillation chain
-
-The execution plane flows in one direction. Each stage consumes the
-one before it and distills it further.
-
 ```text
 Learning   :  scout  →  study
                           │
@@ -55,49 +48,17 @@ Strategic  :            vision  →  brief
 Execution  :                       system-design  →  spec  →  roadmap
 ```
 
-Read top-to-bottom: each plane feeds the one below. Read left-to-right
-within a plane: each artifact distills the one before it. Vision and
-brief both live in `docs/strategy/`; system-design, spec, roadmap each
-get their own subdirectory under `docs/`.
+Each artifact distills the one before it. The detail — what good
+looks like, the traps, the template to fill — lives in the matching
+command (`.claude/commands/<name>.md`) and skill
+(`.claude/skills/<name>/SKILL.md`). The catalog is
+[`.claude/skills/README.md`](.claude/skills/README.md).
 
-- **Scout** (`studies/scout/`) — the wide pass. Once per reference (or
-  again after a big pin move), you map what the reference IS and
-  DOES: top-level shape, capabilities, vocabulary, structural
-  decisions, and the topics that earn a future `/study`. A scout
-  *orients*; it does not mergulhar.
-- **Study** (`studies/`) — you read the pinned reference and extract
-  what matters: the patterns worth keeping, the decisions worth
-  understanding, the traps worth avoiding. A study is *learning*, not
-  a decision.
-- **Vision** (`docs/strategy/`) — the long horizon: where we are
-  going, why now, the principles that guide trade-offs, and what we
-  explicitly refuse. Strategic plane. Durable until a load-bearing
-  premise breaks.
-- **Brief** (`docs/strategy/`) — one pillar of the vision turned into
-  operating context: mission, observable done state, in/out of scope,
-  decisions already made (cited), and the *decision principle* an
-  agent uses when reality deviates from the explicit list. Strategic
-  plane. One brief per initiative.
-- **System design** (`docs/system-design/`) — you turn accumulated
-  learning into architecture: components, boundaries, data flow,
-  failure modes, the shape of the thing. Answers to the brief that
-  framed the initiative (if one exists).
-- **Spec** (`docs/specs/`) — you turn a slice of the architecture into
-  something buildable: scope, interface, behavior, acceptance.
-- **Roadmap** (`docs/roadmap/`) — you sequence the specs: what comes
-  first, what unblocks what, why this order.
-
-You do not have to walk the whole chain every time. A small change may
-be a spec straight from an existing system design. A new domain starts
-with a study — opened on the map the scout already drew. Let the work
+You do not have to walk the whole chain every time. A small change
+may be a spec straight from an existing system design. Let the work
 decide how far back up the chain you reach — but never skip *forward*
 (no spec without the architecture that frames it existing somewhere,
 even briefly).
-
-`docs/adr/` exists for the rare decision durable enough to record as an
-Architecture Decision Record. Most thinking lives as studies and
-designs; promote to an ADR only when a choice will be referenced
-repeatedly and must not be relitigated.
 
 ---
 
@@ -159,55 +120,3 @@ change it here. Silent divergence is the only real violation.
   to think while filling it.
 - **Prefer short and sharp.** Long prose hides the trade-off. Cut.
 - **End with a one-line commit summary** the human can paste.
-
----
-
-## Commands
-
-Under `.claude/commands/`. Each produces one artifact, grouped by
-plane.
-
-Learning:
-
-- `/scout <slug>` — wide pass over the reference; produces a map in
-  `studies/scout/`. Run once per reference, or again after a pin move
-  that invalidates it.
-- `/study <topic>` — read the reference and produce a study in
-  `studies/`.
-
-Strategic:
-
-- `/vision <slug>` — set the long-horizon direction, drawing on
-  scouts and studies; produces a vision document in
-  `docs/strategy/`. Run when starting a new horizon or when a
-  load-bearing premise breaks — not on a schedule.
-- `/brief <slug>` — turn one pillar of an existing vision into
-  operating context an agent can carry over months; produces a brief
-  in `docs/strategy/`. Run once per initiative.
-
-Execution:
-
-- `/system-design <topic>` — turn studies into an architecture doc in
-  `docs/system-design/`, answering to the vision above.
-- `/spec <topic>` — turn a design slice into a buildable spec in
-  `docs/specs/`.
-- `/roadmap` — sequence existing specs into `docs/roadmap/`, in
-  service of the vision.
-
-Skills under `.claude/skills/` carry the craft for each (how to think,
-what good looks like, common traps). Templates under `templates/` carry
-the shape.
-
----
-
-## Growth
-
-This is minimal on purpose and grows by addition:
-
-- A new reference → new `references/<name>.lock`, add `<name>/` to
-  `.gitignore`, `make refs-sync`. The script already loops over locks.
-- A repeated craft → a new skill under `.claude/skills/`.
-- A new artifact type → a template + a skill + a command, same shape
-  as the four that exist.
-
-Grow by adding, never by rewriting from scratch.
