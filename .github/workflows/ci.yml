@@ -52,14 +52,12 @@ jobs:
       - name: Lint commit messages (PR commits only)
         if: github.event_name == 'pull_request'
         # Use the SAME commitlint.config.mjs the commit-msg hook uses.
-        # We install commitlint here because pre-commit's commit-msg
-        # stage runs per-message, not over a range. This keeps the
-        # rules canonical to the project config.
+        # `npx -y` keeps the package in npm's per-package cache instead
+        # of writing a local node_modules/ — the latter would otherwise
+        # be picked up by the link checker below.
         run: |
           set -euo pipefail
-          npm install --no-save --no-audit --no-fund \
-            @commitlint/cli@19
-          npx commitlint \
+          npx -y -p '@commitlint/cli@19' -- commitlint \
             --config commitlint.config.mjs \
             --from "${{ github.event.pull_request.base.sha }}" \
             --to   "${{ github.event.pull_request.head.sha }}" \
@@ -68,12 +66,16 @@ jobs:
       - name: Check internal links (fail on broken)
         # --offline restricts lychee to file/relative links; remote URLs
         # are skipped. Broken internal references must fail the build.
+        # node_modules/ is excluded defensively: nothing in this repo
+        # should ever produce one, but if a step ever does, vendored
+        # READMEs must not gate the build.
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
             --offline
             --no-progress
             --exclude-path references
+            --exclude-path node_modules
             --exclude-path .git
             './**/*.md'
           fail: true
@@ -87,6 +89,7 @@ jobs:
           args: >-
             --no-progress
             --exclude-path references
+            --exclude-path node_modules
             --exclude-path .git
             --include '^https?://'
             './**/*.md'
