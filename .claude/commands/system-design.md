@@ -49,4 +49,8 @@ Load `.claude/skills/system-design/SKILL.md` and
 6. Make it stand alone — restate reference ideas in our terms; the
    argument must not need the study or the reference.
 7. Self-critique: name the part you'd least want to defend.
-8. One-line commit summary.
+8. **Next handoff.** Print at the end of the artifact:
+   > Next: `/spec <slug>` for one component — pick the slice that
+   > unblocks the most downstream work. One-line reason citing the
+   > component or boundary that earns the first spec.
+9. One-line commit summary.

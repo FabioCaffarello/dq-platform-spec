@@ -64,6 +64,13 @@ decide how far back up the chain you reach — but never skip *forward*
 (no spec without the architecture that frames it existing somewhere,
 even briefly).
 
+Multi-elo runs use `/chain <from> <to>` to walk a contiguous segment
+in one session. Hard cap of 3 elos; operator confirmation required
+before starting any chain that produces more than one artifact.
+Every guard at each elo still fires; the chain halts at any
+self-critique that isn't *clearly* cosmetic — the burden of proof
+is on continuing. The chain never commits.
+
 ---
 
 ## How the reference feeds the work

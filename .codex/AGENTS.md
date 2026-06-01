@@ -13,6 +13,8 @@ Before producing anything:
 2. `make refs-sync` if `../references/dq-platform/` is absent; do not
    bump the pin (that's a deliberate, separate change).
 3. Pick the command matching your artifact under
-   `../.claude/commands/`. Each loads its skill and template.
+   `../.claude/commands/`. Each loads its skill and template. For a
+   multi-elo run, `../.claude/commands/chain.md` walks a contiguous
+   chain segment in one session (max 3 elos; operator confirms).
 
 If this file and `../CLAUDE.md` ever disagree, `CLAUDE.md` wins.

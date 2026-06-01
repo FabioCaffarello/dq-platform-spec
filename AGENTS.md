@@ -16,7 +16,10 @@ before producing anything. This file exists for agents that look for
    reason about the reference from memory.
 3. Pick the command for your artifact under `.claude/commands/`. Each
    loads its skill and template. Catalog:
-   [`.claude/skills/README.md`](./.claude/skills/README.md).
+   [`.claude/skills/README.md`](./.claude/skills/README.md). For a
+   multi-elo run (max 3 elos, operator confirmation),
+   [`/chain`](./.claude/commands/chain.md) walks a contiguous
+   segment in one session.
 
 ## The three that matter most
 
